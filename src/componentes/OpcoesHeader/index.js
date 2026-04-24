@@ -1,11 +1,11 @@
-const texto0pcoes = ['CATEGORIAS', 'MINHA ESTANTE', 'FAVORITOS'];
+import './estilo.css';
 
-function OpcoesHeader() {
-    return (
+const textoOpcoes = ['CATEGORIAS','FAVORITOS', 'MINHA ESTANTE'];
+
+function OpcoesHeader(){
+    return(
         <ul className='opcoes'>
-            {texto0pcoes.map((texto) => (
-                    <li className='opcao'><p>{texto}</p></li>
-            ))}
+          {textoOpcoes.map((texto) => ( <li className='opcao'><p>{texto}</p></li>))}
         </ul>
     )
 }
