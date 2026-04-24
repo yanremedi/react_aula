@@ -25,8 +25,27 @@ const Subtitulo = styled.h3`
     margin-bottom: 40px;
 `
 
+const Resuldado = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p{
+        width: 200px;
+    }
+    img{
+        width: 100px;
+    }
+    &:hover{
+        border: 1px solid #FFF;
+    }
+`
+
+
 function Pesquisa() {
-    const [ livrosPesquisados, setLivrosPesquisados] = useState('')
+    const [ livrosPesquisados, setLivrosPesquisados] = useState([])
+    console.log(livrosPesquisados)
     return(
         <PesquisaContainer>
             <h2>Já sabe por onde começar?</h2>
@@ -34,9 +53,19 @@ function Pesquisa() {
             <Input placeholder="Escreva sua proxima leitura"
                     onBlur={evento=> {
                         const textoDigitado = evento.target.value;
-                        const resultadoPesquisa = livros.filter()
+                        const resultadoPesquisa = livros.filter(livro => livro.nome.includes(textoDigitado))
+                        setLivrosPesquisados(resultadoPesquisa)
                     }}
             />
+            {livrosPesquisados.map(livro => (
+                <Resuldado>
+                    <p>{livro.nome}</p>
+                    <img src={livro.src}/>
+                </Resuldado>
+            ))
+            
+            }
+
         </PesquisaContainer>
     )
 }
